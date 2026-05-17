@@ -23,7 +23,6 @@
  */
 
 class block_competency_report extends block_base {
-
     public function init() {
         $this->title = get_string('pluginname', 'block_competency_report');
     }
@@ -47,13 +46,13 @@ class block_competency_report extends block_base {
         $courseid = $this->page->course->id;
         
         // If on the dashboard/site home, courseid is usually SITEID (1).
-        // Let's get a general summary across all courses if on dashboard,
-        // or a specific course summary if inside a course.
+        // Let's get a general summary across all courses if on dashboard.
+        // Or a specific course summary if inside a course.
 
         if ($courseid == SITEID) {
             $this->content->text = get_string('dashboard_summary', 'block_competency_report');
             
-            // Just output a quick stat of total proficiencies
+            // Just output a quick stat of total proficiencies.
             $sql = "SELECT COUNT(id) FROM {competency_usercomp} 
                      WHERE userid = :userid AND proficiency = 1";
             $count = $DB->count_records_sql($sql, ['userid' => $USER->id]);
@@ -61,7 +60,7 @@ class block_competency_report extends block_base {
             $this->content->text .= '<br><br><strong>' . get_string('totalproficient', 'block_competency_report', $count) . '</strong>';
             
         } else {
-            // Course specific view
+            // Course specific view.
             $this->content->text = get_string('course_summary', 'block_competency_report');
             
             $url = new moodle_url('/local/competency_report/student_report.php', ['courseid' => $courseid]);
@@ -74,8 +73,8 @@ class block_competency_report extends block_base {
     public function applicable_formats() {
         return [
             'course-view' => true,
-            'my' => true,
-            'site' => true
+            'my'          => true,
+            'site'        => true,
         ];
     }
 }
