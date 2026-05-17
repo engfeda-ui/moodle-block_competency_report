@@ -18,7 +18,7 @@
  * Version information for block_competency_report.
  *
  * @package    block_competency_report
- * @copyright  2026 Mahmoud
+  * @copyright  2026 Mahmoud Salem
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
