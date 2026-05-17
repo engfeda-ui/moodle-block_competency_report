@@ -22,13 +22,31 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+/**
+ * block_competency_report class definition.
+ *
+ * @package    block_competency_report
+ * @copyright  2026 Mahmoud
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class block_competency_report extends block_base {
+
+    /**
+     * Initialize block.
+     *
+     * @return void
+     */
     public function init() {
         $this->title = get_string('pluginname', 'block_competency_report');
     }
 
+    /**
+     * Get block content.
+     *
+     * @return stdClass The block content.
+     */
     public function get_content() {
-        global $USER, $DB, $PAGE;
+        global $USER, $DB;
 
         if ($this->content !== null) {
             return $this->content;
@@ -44,32 +62,38 @@ class block_competency_report extends block_base {
 
         // We only want to show this block on course pages or dashboard.
         $courseid = $this->page->course->id;
-        
+
         // If on the dashboard/site home, courseid is usually SITEID (1).
         // Let's get a general summary across all courses if on dashboard.
         // Or a specific course summary if inside a course.
 
         if ($courseid == SITEID) {
             $this->content->text = get_string('dashboard_summary', 'block_competency_report');
-            
+
             // Just output a quick stat of total proficiencies.
-            $sql = "SELECT COUNT(id) FROM {competency_usercomp} 
-                     WHERE userid = :userid AND proficiency = 1";
+            $sql = "SELECT COUNT(id) FROM {competency_usercomp} WHERE userid = :userid AND proficiency = 1";
             $count = $DB->count_records_sql($sql, ['userid' => $USER->id]);
-            
-            $this->content->text .= '<br><br><strong>' . get_string('totalproficient', 'block_competency_report', $count) . '</strong>';
-            
+
+            $text = get_string('totalproficient', 'block_competency_report', $count);
+            $this->content->text .= '<br><br><strong>' . $text . '</strong>';
         } else {
             // Course specific view.
             $this->content->text = get_string('course_summary', 'block_competency_report');
-            
+
             $url = new moodle_url('/local/competency_report/student_report.php', ['courseid' => $courseid]);
-            $this->content->text .= '<br><br><a href="'.$url.'" class="btn btn-primary w-100">' . get_string('viewmyreport', 'block_competency_report') . '</a>';
+            $linktext = get_string('viewmyreport', 'block_competency_report');
+            $this->content->text .= '<br><br><a href="' . $url . '" class="btn btn-primary w-100">' .
+                $linktext . '</a>';
         }
 
         return $this->content;
     }
 
+    /**
+     * Determine where the block can be added.
+     *
+     * @return array The formats where the block is applicable.
+     */
     public function applicable_formats() {
         return [
             'course-view' => true,

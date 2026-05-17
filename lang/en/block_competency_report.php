@@ -14,6 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
+/**
+ * Strings for component 'block_competency_report'.
+ *
+ * @package    block_competency_report
+ * @copyright  2026 Mahmoud
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
 $string['pluginname'] = 'Competency Report Overview';
 $string['dashboard_summary'] = 'Your overall competency achievement across all courses.';
 $string['course_summary'] = 'Check your competency progression for this course.';
