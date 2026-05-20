@@ -23,7 +23,13 @@
  */
 
 $string['pluginname'] = 'Competency Report Overview';
+$string['competency_report:addinstance'] = 'Add a Competency Report block';
+$string['competency_report:myaddinstance'] = 'Add a Competency Report block to My Moodle';
 $string['dashboard_summary'] = 'Your overall competency achievement across all courses.';
 $string['course_summary'] = 'Check your competency progression for this course.';
 $string['totalproficient'] = 'Total Proficiencies Achieved: {$a}';
+$string['totalproficient_label'] = 'Proficient Competencies';
 $string['viewmyreport'] = 'View Full Report Card';
+$string['nodata'] = 'No competency data available yet.';
+$string['privacy:metadata'] = 'The Competency Report block does not store any personal data. It reads competency data managed by local_competency_report.';
+$string['privacy:metadata:local_competency_report'] = 'This block reads competency data from the local_competency_report plugin.';

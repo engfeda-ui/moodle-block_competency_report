@@ -30,8 +30,9 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class block_competency_report extends block_base {
+
     /**
-     * Initialize block.
+     * Initialize block title.
      *
      * @return void
      */
@@ -40,58 +41,111 @@ class block_competency_report extends block_base {
     }
 
     /**
-     * Get block content.
+     * Get block content rendered via Mustache template.
      *
-     * @return stdClass The block content.
+     * @return stdClass The block content object.
      */
     public function get_content() {
-        global $USER, $DB;
+        global $USER, $DB, $OUTPUT;
 
         if ($this->content !== null) {
             return $this->content;
         }
 
-        $this->content = new stdClass();
-        $this->content->text = '';
+        $this->content         = new stdClass();
+        $this->content->text   = '';
         $this->content->footer = '';
 
         if (!isloggedin() || isguestuser()) {
             return $this->content;
         }
 
-        // We only want to show this block on course pages or dashboard.
         $courseid = $this->page->course->id;
 
-        // If on the dashboard/site home, courseid is usually SITEID (1).
-        // Let's get a general summary across all courses if on dashboard.
-        // Or a specific course summary if inside a course.
-
         if ($courseid == SITEID) {
-            $this->content->text = get_string('dashboard_summary', 'block_competency_report');
-
-            // Just output a quick stat of total proficiencies.
-            $sql = "SELECT COUNT(id) FROM {competency_usercomp} WHERE userid = :userid AND proficiency = 1";
-            $count = $DB->count_records_sql($sql, ['userid' => $USER->id]);
-
-            $text = get_string('totalproficient', 'block_competency_report', $count);
-            $this->content->text .= '<br><br><strong>' . $text . '</strong>';
+            $this->content->text = $this->render_dashboard_view($USER->id, $DB, $OUTPUT);
         } else {
-            // Course specific view.
-            $this->content->text = get_string('course_summary', 'block_competency_report');
-
-            $url = new moodle_url('/local/competency_report/student_report.php', ['courseid' => $courseid]);
-            $linktext = get_string('viewmyreport', 'block_competency_report');
-            $this->content->text .= '<br><br><a href="' . $url . '" class="btn btn-primary w-100">' .
-                $linktext . '</a>';
+            $this->content->text = $this->render_course_view($courseid, $OUTPUT);
         }
 
         return $this->content;
     }
 
     /**
+     * Build template context and render the dashboard (site-home) view.
+     *
+     * Shows total proficient competencies with a progress bar.
+     *
+     * @param int    $userid The current user ID.
+     * @param \moodle_database $db  The global DB object.
+     * @param \core_renderer   $output The global OUTPUT renderer.
+     * @return string Rendered HTML.
+     */
+    protected function render_dashboard_view(int $userid, $db, $output): string {
+        // Count proficient competencies for this user.
+        $proficient = (int) $db->count_records_sql(
+            "SELECT COUNT(id) FROM {competency_usercomp} WHERE userid = :userid AND proficiency = 1",
+            ['userid' => $userid]
+        );
+
+        // Count total competencies assigned to this user.
+        $total = (int) $db->count_records_sql(
+            "SELECT COUNT(id) FROM {competency_usercomp} WHERE userid = :userid",
+            ['userid' => $userid]
+        );
+
+        $percent  = ($total > 0) ? (int) round(($proficient / $total) * 100) : 0;
+
+        // Choose progress-bar colour based on percentage.
+        if ($percent >= 80) {
+            $barclass = 'bg-success';
+        } else if ($percent >= 50) {
+            $barclass = 'bg-warning';
+        } else {
+            $barclass = 'bg-danger';
+        }
+
+        $context = [
+            'is_dashboard'    => true,
+            'summary_text'    => get_string('dashboard_summary', 'block_competency_report'),
+            'proficient_label' => get_string('totalproficient_label', 'block_competency_report'),
+            'proficient'      => $proficient,
+            'total'           => $total,
+            'percent'         => $percent,
+            'bar_class'       => $barclass,
+            'has_data'        => ($total > 0),
+            'nodata_str'      => get_string('nodata', 'block_competency_report'),
+        ];
+
+        return $output->render_from_template('block_competency_report/block_content', $context);
+    }
+
+    /**
+     * Build template context and render the course-specific view.
+     *
+     * Shows a button linking to the student's full report card.
+     *
+     * @param int              $courseid The current course ID.
+     * @param \core_renderer   $output   The global OUTPUT renderer.
+     * @return string Rendered HTML.
+     */
+    protected function render_course_view(int $courseid, $output): string {
+        $url = new moodle_url('/local/competency_report/student_report.php', ['courseid' => $courseid]);
+
+        $context = [
+            'is_dashboard'   => false,
+            'summary_text'   => get_string('course_summary', 'block_competency_report'),
+            'report_url'     => $url->out(false),
+            'viewreport_str' => get_string('viewmyreport', 'block_competency_report'),
+        ];
+
+        return $output->render_from_template('block_competency_report/block_content', $context);
+    }
+
+    /**
      * Determine where the block can be added.
      *
-     * @return array The formats where the block is applicable.
+     * @return array The page formats where this block is applicable.
      */
     public function applicable_formats() {
         return [

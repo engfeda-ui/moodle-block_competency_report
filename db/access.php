@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Version information for block_competency_report.
+ * Capability definitions for block_competency_report.
  *
  * @package    block_competency_report
  * @copyright  2026 Mahmoud Salem
@@ -24,13 +24,25 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'block_competency_report';
-$plugin->version   = 2026051901;
-$plugin->requires  = 2024042210; // Requires Moodle 4.5.
-$plugin->supported = [405, 500]; // Supported Moodle versions.
-$plugin->maturity  = MATURITY_STABLE;
-$plugin->release   = 'v1.1.0';
+$capabilities = [
 
-$plugin->dependencies = [
-    'local_competency_report' => 2026051900,
+    // Allows a user to add this block to a page.
+    'block/competency_report:addinstance' => [
+        'riskbitmask'  => RISK_SPAM,
+        'captype'      => 'write',
+        'contextlevel' => CONTEXT_BLOCK,
+        'archetypes'   => [
+            'editingteacher' => CAP_ALLOW,
+            'manager'        => CAP_ALLOW,
+        ],
+    ],
+
+    // Allows a user to add this block to their personal My Moodle page.
+    'block/competency_report:myaddinstance' => [
+        'captype'      => 'write',
+        'contextlevel' => CONTEXT_SYSTEM,
+        'archetypes'   => [
+            'user' => CAP_ALLOW,
+        ],
+    ],
 ];

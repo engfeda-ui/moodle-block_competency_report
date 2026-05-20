@@ -4,21 +4,23 @@
 [![PHP Version](https://img.shields.io/badge/PHP-8.1%20%7C%208.2%20%7C%208.3-blue.svg?style=flat-square)](https://php.net)
 [![Database](https://img.shields.io/badge/Database-PostgreSQL%20%7C%20MySQL%20%7C%20MariaDB-purple.svg?style=flat-square)](https://docs.moodle.org)
 [![License](https://img.shields.io/badge/License-GPL%20v3-green.svg?style=flat-square)](http://www.gnu.org/copyleft/gpl.html)
+[![Version](https://img.shields.io/badge/Version-v1.1.0-blue.svg?style=flat-square)](https://github.com)
 
-A professional Moodle Dashboard Block plugin that provides students with a clean, high-impact summary of their competency achievements. Placed directly on the Moodle Dashboard or course sidebar, this widget acts as a motivational badge center, showing total proficiencies achieved and providing direct, one-click access to full-page competency analysis reports.
+A professional Moodle Dashboard Block plugin that provides students with a clean, high-impact summary of their competency achievements. Placed on the Moodle Dashboard or course sidebar, this widget shows total proficiencies achieved with a visual progress bar and provides one-click access to full competency analysis reports.
 
 ---
 
 ## ✨ Features
 
-- **Dashboard-Level Summary:** Instantly showcases the total count of completed and mastered competencies to the student upon logging in.
-- **Dynamic Context-Aware Links:** 
-  - **On Dashboard:** Aggregates and links to a site-wide competency performance overview.
-  - **On Course Page:** Directly context-links to the student's individual competency report for that specific course.
-- **Aesthetic Visual Badging:** Renders high-quality visual cues aligned with modern Moodle design standards.
-- **Enterprise Standards:**
-  - Standard Moodle localization support with translation packs for English (`en`) and Turkish (`tr`).
-  - Seamless backup & restore pipeline integration.
+- **Dashboard-Level Summary:** Shows the student's total proficient competencies site-wide with a colour-coded progress bar (green / yellow / red based on percentage).
+- **Dynamic Context-Aware Display:**
+  - **On Dashboard:** Aggregates all competencies across all courses with a progress bar showing `X / Y` proficient.
+  - **On Course Page:** Shows a direct link to the student's individual competency report for that specific course.
+- **Mustache Template Rendering (NEW in v1.1.0):** Block content is now rendered via a Mustache template (`templates/block_content.mustache`), making it fully customisable by Moodle themes without touching PHP.
+- **Colour-Coded Progress Bar (NEW in v1.1.0):** Visual progress bar with three states — green (≥80%), yellow (≥50%), red (<50%).
+- **Capability Definitions (NEW in v1.1.0):** `db/access.php` now defines `addinstance` and `myaddinstance` capabilities, giving administrators fine-grained control over who can add the block.
+- **Privacy Provider (NEW in v1.1.0):** `classes/privacy/provider.php` formally declares that this block stores no personal data of its own.
+- **Localization Support:** English language strings included.
 
 ---
 
@@ -26,90 +28,103 @@ A professional Moodle Dashboard Block plugin that provides students with a clean
 
 | Dependency | Required Version / Compatibility |
 | :--- | :--- |
-| **Moodle Framework** | Moodle 4.5 to 5.0+ (Tested against Moodle 4.5/5.0+ stable branches) |
+| **Moodle Framework** | Moodle 4.5 to 5.0+ |
 | **PHP Runtime** | PHP 8.1, PHP 8.2, PHP 8.3 |
 | **Database System** | PostgreSQL 13+, MySQL 8.0+, or MariaDB 10.5+ |
-| **Required Plugin** | [**`local_competency_report`**](https://github.com/engfeda-ui/moodle-local_competency_report) (Must be installed and configured) |
+| **Required Plugin** | [**`local_competency_report`**](https://github.com/engfeda-ui/moodle-local_competency_report) ≥ 2026051900 |
 
 ---
 
 ## 🚀 Installation
 
-Follow these steps to install the plugin manually:
-
-1. **Prerequisite:** Ensure that you have already installed the [**`local_competency_report`**](https://github.com/engfeda-ui/moodle-local_competency_report) plugin.
+1. **Prerequisite:** Install [**`local_competency_report`**](https://github.com/engfeda-ui/moodle-local_competency_report) first.
 2. **Download & Extract:** Download the repository and extract the files.
-3. **Directory Placement:** Copy the `block_competency_report` folder into your Moodle installation's blocks directory:
-   ```bash
+3. **Directory Placement:** Copy the `block_competency_report` folder into your Moodle `blocks/` directory:
+   ```
    moodle/blocks/competency_report
    ```
-   *Note: Ensure the directory name inside `blocks/` is exactly `competency_report`.*
-4. **Run Moodle Upgrade:** Log in to your Moodle site as an Administrator and navigate to **Site administration > Notifications** to trigger the database upgrade and complete the installation.
-5. **Alternative Install:** Alternatively, zip the directory and upload it via **Site administration > Plugins > Install plugins**.
+   > The directory name inside `blocks/` must be exactly `competency_report`.
+4. **Run Moodle Upgrade:** Log in as Administrator and navigate to **Site administration > Notifications**.
+5. **Alternative Install:** Zip the directory and upload via **Site administration > Plugins > Install plugins**.
 
 ---
 
 ## 🛠️ Usage & Configuration
 
-Adding the block to the Dashboard or a Course:
+### Placing on the Student Dashboard
+1. Go to the **Dashboard** and enable **Edit mode**.
+2. Open the block drawer and click **Add a block**.
+3. Select **Competency Report Overview**.
+4. The block shows each student their proficiency count and progress bar across all courses.
 
-### A. Placing on the Student Dashboard
-1. Go to the **Dashboard** and turn on **"Edit mode"** (top right).
-2. Open the block drawer (on the right) and click **"Add a block"**.
-3. Select **"Competency Report Overview"** from the list.
-4. Save. The block will now show each logged-in student their personal competency mastery stats site-wide!
+### Placing on a Course Page
+1. Go to the desired **Course** and enable **Edit mode**.
+2. Open the block drawer and click **Add a block**.
+3. Choose **Competency Report Overview**.
+4. The block shows a **"View Full Report Card"** button linking to the course-specific competency report.
 
-### B. Placing on a Specific Course
-1. Go to the desired **Course** and turn on **"Edit mode"**.
-2. Open the block drawer on the right and click **"Add a block"**.
-3. Choose **"Competency Report Overview"**.
-4. The block will show a link: `"View My Course Competencies"`. Clicking this launches the specific `local_competency_report` page filtered to that course's competencies.
+---
+
+## 📋 Changelog
+
+### v1.1.0 — 2026-05-19
+- **New:** Mustache template (`templates/block_content.mustache`) — HTML is no longer built via PHP string concatenation.
+- **New:** Colour-coded progress bar on the dashboard view (green / yellow / red).
+- **New:** `db/access.php` — defines `addinstance` and `myaddinstance` capabilities.
+- **New:** `classes/privacy/provider.php` — GDPR privacy provider formally declaring no personal data is stored.
+- **New:** Additional language strings: `totalproficient_label`, `nodata`, capability strings, privacy strings.
+- **Refactor:** `get_content()` split into `render_dashboard_view()` and `render_course_view()` helper methods for clarity.
+
+### v1.0.1 — 2026-05-19
+- Initial stable release.
 
 ---
 
 ## 💻 Directory Structure
 
-```text
+```
 block_competency_report/
-├── classes/                # Autoloaded PHP classes (Block helper methods)
-├── db/                     # Moodle DB files (access.php)
-├── lang/                   # Language localization packs
-│   ├── en/                 # English translations
-│   └── tr/                 # Turkish translations
-├── block_competency_report.php # Main block class and content generator
-├── version.php             # Moodle plugin version and dependency definition
-└── README.md               # Professional documentation
+├── classes/
+│   └── privacy/
+│       └── provider.php    # GDPR Privacy provider
+├── db/
+│   └── access.php          # Capability definitions
+├── lang/
+│   └── en/                 # English language strings
+├── templates/
+│   └── block_content.mustache  # Mustache template for block HTML
+├── block_competency_report.php # Main block class
+├── version.php             # Plugin version and metadata
+└── README.md
 ```
 
 ---
 
 ## 🔗 The Competency Ecosystem
 
-This block serves as the user-facing landing widget of our 3-tier Moodle competency-based education suite:
+This block is the user-facing widget of a 4-plugin competency-based education suite:
 
 ```mermaid
 graph TD
-    A[qbank_competency] -->|1. Links Questions to Competencies| B[local_competency_report]
-    B -->|2. Analyzes Student Answers & Exports Reports| C[block_competency_report]
-    C -->|3. Displays Student Competency Badges on Dashboard| D[Moodle Dashboard]
+    A[qbank_competency] -->|Maps questions to competencies| B[local_competency_report]
+    B -->|Analyses attempts & generates reports| C[block_competency_report]
+    C -->|Shows progress on dashboard| D[Moodle Dashboard / Course]
+    B -->|Blocks attempts after mastery| E[quizaccess_failgrade]
 ```
 
 ---
 
 ## 🔒 Security & Code Compliance
 
-This plugin has been audited and hardened according to Moodle's strict security and quality guidelines:
-
-- **CSRF Protection:** Standard Moodle session key verification (`require_sesskey()`) is enforced on all state-mutating actions (such as queueing calculations).
-- **SQL Injection Prevention:** Every query utilizes Moodle's Database API (`$DB`) with parameter bindings and named placeholders (`:named`), completely avoiding raw SQL interpolation and protecting against injection attacks.
-- **Input Sanitization:** Direct superglobals (`$_GET`, `$_POST`, `$_REQUEST`) are strictly forbidden. Input retrieval uses standard Moodle validation helpers like `required_param()` and `optional_param()` with strict parameter type filters (`PARAM_INT`, `PARAM_BOOL`, etc.).
-- **Capability Controls:** Page entry points verify course contexts with `require_login()` and validate explicit capabilities (e.g. `mod/quiz:viewreports`, `local_competency_report:viewreports`) via `require_capability()`.
-- **Frankenstyle & Namespace Compliance:** Database tables and autoloaded classes are strictly prefixed and namespaced (e.g. `\local_competency_report\...` or `\quizaccess_failgrade\...`) preventing any class name or table name collisions.
-- **Coding Standards:** Code is audited via `PHP_CodeSniffer` (PHPCS) enforcing clean syntax, proper DocBlocks, and standard Moodle conventions.
+- **SQL Injection Prevention:** All queries use Moodle's `$DB` API with named parameter bindings.
+- **Input Sanitization:** All input retrieved via `required_param()` / `optional_param()` with strict type filters.
+- **Capability Controls:** `db/access.php` defines granular capabilities for block placement.
+- **Privacy Compliance:** `privacy/provider.php` formally declares the plugin's data footprint.
+- **Coding Standards:** Compliant with Moodle's `PHP_CodeSniffer` (PHPCS) ruleset.
 
 ---
 
 ## 📄 License & Credits
 
 - **Copyright:** © 2026 Mahmoud Salem
-- **License:** Licensed under the [GNU GPL v3 License](http://www.gnu.org/copyleft/gpl.html) (or later).
+- **License:** [GNU GPL v3](http://www.gnu.org/copyleft/gpl.html) or later.
