@@ -30,7 +30,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class block_competency_report extends block_base {
-
     /**
      * Initialize block title.
      *

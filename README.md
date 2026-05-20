@@ -31,7 +31,7 @@ A professional Moodle Dashboard Block plugin that provides students with a clean
 | **Moodle Framework** | Moodle 4.5 to 5.0+ |
 | **PHP Runtime** | PHP 8.1, PHP 8.2, PHP 8.3 |
 | **Database System** | PostgreSQL 13+, MySQL 8.0+, or MariaDB 10.5+ |
-| **Required Plugin** | [**`local_competency_report`**](https://github.com/engfeda-ui/moodle-local_competency_report) ≥ 2026051900 |
+| **Required Plugin** | [**`local_competency_report`**](https://github.com/engfeda-ui/moodle-local_competency_report) ≥ 2026052000 |
 
 ---
 
