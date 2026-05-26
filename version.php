@@ -25,12 +25,12 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'block_competency_report';
-$plugin->version   = 2026052000;
+$plugin->version   = 2026052500;
 $plugin->requires  = 2024042210; // Requires Moodle 4.5.
 $plugin->supported = [405, 500]; // Supported Moodle versions.
 $plugin->maturity  = MATURITY_STABLE;
-$plugin->release   = 'v1.1.0';
+$plugin->release   = 'v1.2.0';
 
 $plugin->dependencies = [
-    'local_competency_report' => 2026052000,
+    'local_competency_report' => 2026052500,
 ];

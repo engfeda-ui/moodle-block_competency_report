@@ -4,7 +4,7 @@
 [![PHP Version](https://img.shields.io/badge/PHP-8.1%20%7C%208.2%20%7C%208.3-blue.svg?style=flat-square)](https://php.net)
 [![Database](https://img.shields.io/badge/Database-PostgreSQL%20%7C%20MySQL%20%7C%20MariaDB-purple.svg?style=flat-square)](https://docs.moodle.org)
 [![License](https://img.shields.io/badge/License-GPL%20v3-green.svg?style=flat-square)](http://www.gnu.org/copyleft/gpl.html)
-[![Version](https://img.shields.io/badge/Version-v1.1.0-blue.svg?style=flat-square)](https://github.com)
+[![Version](https://img.shields.io/badge/Version-v1.2.0-blue.svg?style=flat-square)](https://github.com)
 
 A professional Moodle Dashboard Block plugin that provides students with a clean, high-impact summary of their competency achievements. Placed on the Moodle Dashboard or course sidebar, this widget shows total proficiencies achieved with a visual progress bar and provides one-click access to full competency analysis reports.
 
@@ -31,7 +31,7 @@ A professional Moodle Dashboard Block plugin that provides students with a clean
 | **Moodle Framework** | Moodle 4.5 to 5.0+ |
 | **PHP Runtime** | PHP 8.1, PHP 8.2, PHP 8.3 |
 | **Database System** | PostgreSQL 13+, MySQL 8.0+, or MariaDB 10.5+ |
-| **Required Plugin** | [**`local_competency_report`**](https://github.com/engfeda-ui/moodle-local_competency_report) ≥ 2026052000 |
+| **Required Plugin** | [**`local_competency_report`**](https://github.com/engfeda-ui/moodle-local_competency_report) ≥ 2026052500 |
 
 ---
 
@@ -66,6 +66,10 @@ A professional Moodle Dashboard Block plugin that provides students with a clean
 ---
 
 ## 📋 Changelog
+
+### v1.2.0 — 2026-05-25
+- **Refactor:** Verified and optimized Mustache templates to use native Bootstrap classes for maximum layout and theme compatibility with Moodle 4.5+ and 5.0+ Boost themes.
+- **Dependency Sync:** Updated `local_competency_report` dependency to version `2026052500` to support the latest local LLM reporting upgrades.
 
 ### v1.1.0 — 2026-05-19
 - **New:** Mustache template (`templates/block_content.mustache`) — HTML is no longer built via PHP string concatenation.
