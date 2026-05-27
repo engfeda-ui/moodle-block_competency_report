@@ -4,7 +4,7 @@
 [![PHP Version](https://img.shields.io/badge/PHP-8.1%20%7C%208.2%20%7C%208.3-blue.svg?style=flat-square)](https://php.net)
 [![Database](https://img.shields.io/badge/Database-PostgreSQL%20%7C%20MySQL%20%7C%20MariaDB-purple.svg?style=flat-square)](https://docs.moodle.org)
 [![License](https://img.shields.io/badge/License-GPL%20v3-green.svg?style=flat-square)](http://www.gnu.org/copyleft/gpl.html)
-[![Version](https://img.shields.io/badge/Version-v1.2.0-blue.svg?style=flat-square)](https://github.com)
+[![Version](https://img.shields.io/badge/Version-v1.2.0-blue.svg?style=flat-square)](https://github.com/engfeda-ui/moodle-block_competency_report)
 
 A professional Moodle Dashboard Block plugin that provides students with a clean, high-impact summary of their competency achievements. Placed on the Moodle Dashboard or course sidebar, this widget shows total proficiencies achieved with a visual progress bar and provides one-click access to full competency analysis reports.
 
@@ -31,13 +31,13 @@ A professional Moodle Dashboard Block plugin that provides students with a clean
 | **Moodle Framework** | Moodle 4.5 to 5.0+ |
 | **PHP Runtime** | PHP 8.1, PHP 8.2, PHP 8.3 |
 | **Database System** | PostgreSQL 13+, MySQL 8.0+, or MariaDB 10.5+ |
-| **Required Plugin** | [**`local_competency_report`**](https://github.com/engfeda-ui/moodle-local_competency_report) ≥ 2026052500 |
+| **Required Plugin** | [**`local_competency_report`**](https://github.com/engfeda-ui/competency-report) ≥ 2026052500 |
 
 ---
 
 ## 🚀 Installation
 
-1. **Prerequisite:** Install [**`local_competency_report`**](https://github.com/engfeda-ui/moodle-local_competency_report) first.
+1. **Prerequisite:** Install [**`local_competency_report`**](https://github.com/engfeda-ui/competency-report) first.
 2. **Download & Extract:** Download the repository and extract the files.
 3. **Directory Placement:** Copy the `block_competency_report` folder into your Moodle `blocks/` directory:
    ```
