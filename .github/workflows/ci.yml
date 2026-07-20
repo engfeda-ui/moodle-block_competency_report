@@ -58,7 +58,15 @@ jobs:
           echo "$(cd ci/bin; pwd)" >> $GITHUB_PATH
           echo "$(cd ci/vendor/bin; pwd)" >> $GITHUB_PATH
 
-      - name: Add local_competency_report dependency
+      - name: Add qbank_comp_ext dependency
+        run: |
+          if [ -n "${{ secrets.COMPETENCY_CLONE_TOKEN }}" ]; then
+            moodle-plugin-ci add-plugin --clone=https://x-access-token:${{ secrets.COMPETENCY_CLONE_TOKEN }}@github.com/engfeda-ui/competency.git
+          else
+            moodle-plugin-ci add-plugin --clone=https://github.com/engfeda-ui/competency.git
+          fi
+
+      - name: Add local_comp_report_ext dependency
         run: |
           if [ -n "${{ secrets.COMPETENCY_CLONE_TOKEN }}" ]; then
             moodle-plugin-ci add-plugin --clone=https://x-access-token:${{ secrets.COMPETENCY_CLONE_TOKEN }}@github.com/engfeda-ui/competency-report.git
