@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Strings for component 'block_competency_report'.
+ * Strings for component 'block_comp_report_ext'.
  *
- * @package    block_competency_report
+ * @package    block_comp_report_ext
  * @copyright  2026 Mahmoud Salem
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -31,5 +31,5 @@ $string['totalproficient'] = 'Total Proficiencies Achieved: {$a}';
 $string['totalproficient_label'] = 'Proficient Competencies';
 $string['viewmyreport'] = 'View Full Report Card';
 $string['nodata'] = 'No competency data available yet.';
-$string['privacy:metadata'] = 'The Competency Report block does not store any personal data. It reads competency data managed by local_competency_report.';
-$string['privacy:metadata:local_competency_report'] = 'This block reads competency data from the local_competency_report plugin.';
+$string['privacy:metadata'] = 'The Competency Report block does not store any personal data. It reads competency data managed by local_comp_report_ext.';
+$string['privacy:metadata:local_comp_report_ext'] = 'This block reads competency data from the local_comp_report_ext plugin.';

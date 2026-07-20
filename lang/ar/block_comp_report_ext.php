@@ -15,9 +15,9 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Arabic language strings for block_competency_report.
+ * Arabic language strings for block_comp_report_ext.
  *
- * @package   block_competency_report
+ * @package   block_comp_report_ext
  * @copyright 2026 Mahmoud Salem <eng.feda@gmail.com>
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -36,4 +36,4 @@ $string['viewmyreport'] = 'عرض بطاقة التقرير الكاملة';
 
 // Privacy.
 $string['privacy:metadata'] = 'كتلة نظرة عامة على تقارير الكفاءات لا تقوم بحفظ أي بيانات شخصية.';
-$string['privacy:metadata:local_competency_report'] = 'تقوم هذه الكتلة بقراءة بيانات تقدم الجدارات فقط من إضافة تقارير الكفاءات المحلية (local_competency_report).';
+$string['privacy:metadata:local_comp_report_ext'] = 'تقوم هذه الكتلة بقراءة بيانات تقدم الجدارات فقط من إضافة تقارير الكفاءات المحلية (local_comp_report_ext).';

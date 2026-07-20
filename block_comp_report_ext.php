@@ -17,26 +17,26 @@
 /**
  * Competency Report Block.
  *
- * @package    block_competency_report
+ * @package    block_comp_report_ext
  * @copyright  2026 Mahmoud Salem
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 /**
- * block_competency_report class definition.
+ * block_comp_report_ext class definition.
  *
- * @package    block_competency_report
+ * @package    block_comp_report_ext
  * @copyright  2026 Mahmoud Salem
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class block_competency_report extends block_base {
+class block_comp_report_ext extends block_base {
     /**
      * Initialize block title.
      *
      * @return void
      */
     public function init() {
-        $this->title = get_string('pluginname', 'block_competency_report');
+        $this->title = get_string('pluginname', 'block_comp_report_ext');
     }
 
     /**
@@ -106,17 +106,17 @@ class block_competency_report extends block_base {
 
         $context = [
             'is_dashboard'    => true,
-            'summary_text'    => get_string('dashboard_summary', 'block_competency_report'),
-            'proficient_label' => get_string('totalproficient_label', 'block_competency_report'),
+            'summary_text'    => get_string('dashboard_summary', 'block_comp_report_ext'),
+            'proficient_label' => get_string('totalproficient_label', 'block_comp_report_ext'),
             'proficient'      => $proficient,
             'total'           => $total,
             'percent'         => $percent,
             'bar_class'       => $barclass,
             'has_data'        => ($total > 0),
-            'nodata_str'      => get_string('nodata', 'block_competency_report'),
+            'nodata_str'      => get_string('nodata', 'block_comp_report_ext'),
         ];
 
-        return $output->render_from_template('block_competency_report/block_content', $context);
+        return $output->render_from_template('block_comp_report_ext/block_content', $context);
     }
 
     /**
@@ -133,12 +133,12 @@ class block_competency_report extends block_base {
 
         $context = [
             'is_dashboard'   => false,
-            'summary_text'   => get_string('course_summary', 'block_competency_report'),
+            'summary_text'   => get_string('course_summary', 'block_comp_report_ext'),
             'report_url'     => $url->out(false),
-            'viewreport_str' => get_string('viewmyreport', 'block_competency_report'),
+            'viewreport_str' => get_string('viewmyreport', 'block_comp_report_ext'),
         ];
 
-        return $output->render_from_template('block_competency_report/block_content', $context);
+        return $output->render_from_template('block_comp_report_ext/block_content', $context);
     }
 
     /**

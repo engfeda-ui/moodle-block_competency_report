@@ -15,16 +15,16 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Version information for block_competency_report.
+ * Version information for block_comp_report_ext.
  *
- * @package    block_competency_report
+ * @package    block_comp_report_ext
  * @copyright  2026 Mahmoud Salem
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->component = 'block_competency_report';
+$plugin->component = 'block_comp_report_ext';
 $plugin->version   = 2026052500;
 $plugin->requires  = 2024042210; // Requires Moodle 4.5.
 $plugin->supported = [405, 500]; // Supported Moodle versions.
@@ -32,5 +32,5 @@ $plugin->maturity  = MATURITY_STABLE;
 $plugin->release   = 'v1.2.0';
 
 $plugin->dependencies = [
-    'local_competency_report' => 2026052500,
+    'local_comp_report_ext' => 2026052500,
 ];

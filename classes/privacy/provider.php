@@ -15,14 +15,14 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Privacy provider for block_competency_report.
+ * Privacy provider for block_comp_report_ext.
  *
- * @package    block_competency_report
+ * @package    block_comp_report_ext
  * @copyright  2026 Mahmoud Salem
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace block_competency_report\privacy;
+namespace block_comp_report_ext\privacy;
 
 use core_privacy\local\metadata\collection;
 use core_privacy\local\request\writer;
@@ -31,10 +31,10 @@ use core_privacy\local\request\writer;
  * Privacy provider — this block stores no personal data of its own.
  *
  * All competency data displayed by this block is owned by core_competency
- * and local_competency_report; those plugins are responsible for their own
+ * and local_comp_report_ext; those plugins are responsible for their own
  * privacy declarations.
  *
- * @package    block_competency_report
+ * @package    block_comp_report_ext
  * @copyright  2026 Mahmoud Salem
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -48,9 +48,9 @@ class provider implements \core_privacy\local\metadata\provider {
     public static function get_metadata(collection $collection): collection {
         // This block reads competency data from core tables but stores nothing itself.
         $collection->add_plugintype_link(
-            'local_competency_report',
+            'local_comp_report_ext',
             [],
-            'privacy:metadata:local_competency_report'
+            'privacy:metadata:local_comp_report_ext'
         );
 
         return $collection;
