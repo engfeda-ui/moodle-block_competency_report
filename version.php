@@ -25,12 +25,12 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'block_comp_report_ext';
-$plugin->version   = 2026052500;
+$plugin->version   = 2026072401;
 $plugin->requires  = 2024042210; // Requires Moodle 4.5.
 $plugin->supported = [405, 500]; // Supported Moodle versions.
 $plugin->maturity  = MATURITY_STABLE;
-$plugin->release   = 'v1.2.0';
+$plugin->release   = 'v1.3.0';
 
 $plugin->dependencies = [
-    'local_comp_report_ext' => 2026052500,
+    'local_comp_report_ext' => 2026072401,
 ];
