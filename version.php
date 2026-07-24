@@ -31,6 +31,4 @@ $plugin->supported = [405, 500]; // Supported Moodle versions.
 $plugin->maturity  = MATURITY_STABLE;
 $plugin->release   = 'v1.3.0';
 
-$plugin->dependencies = [
-    'local_comp_report_ext' => 2026072401,
-];
+$plugin->dependencies = [];

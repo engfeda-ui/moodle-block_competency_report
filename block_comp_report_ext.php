@@ -129,7 +129,7 @@ class block_comp_report_ext extends block_base {
      * @return string Rendered HTML.
      */
     protected function render_course_view(int $courseid, $output): string {
-        $url = new moodle_url('/local/competency_report/student_report.php', ['courseid' => $courseid]);
+        $url = new moodle_url('/local/comp_report_ext/student_report.php', ['courseid' => $courseid]);
 
         $context = [
             'is_dashboard'   => false,

@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 $capabilities = [
 
     // Allows a user to add this block to a page.
-    'block/competency_report:addinstance' => [
+    'block/comp_report_ext:addinstance' => [
         'riskbitmask'  => RISK_SPAM,
         'captype'      => 'write',
         'contextlevel' => CONTEXT_BLOCK,
@@ -38,7 +38,7 @@ $capabilities = [
     ],
 
     // Allows a user to add this block to their personal My Moodle page.
-    'block/competency_report:myaddinstance' => [
+    'block/comp_report_ext:myaddinstance' => [
         'captype'      => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
         'archetypes'   => [

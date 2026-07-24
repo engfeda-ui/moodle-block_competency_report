@@ -25,8 +25,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'نظرة عامة على تقرير الكفاءات';
-$string['competency_report:addinstance'] = 'إضافة كتلة تقرير الكفاءات جديدة';
-$string['competency_report:myaddinstance'] = 'إضافة كتلة تقرير الكفاءات إلى لوحة معلوماتي';
+$string['comp_report_ext:addinstance'] = 'إضافة كتلة تقرير الكفاءات جديدة';
+$string['comp_report_ext:myaddinstance'] = 'إضافة كتلة تقرير الكفاءات إلى لوحة معلوماتي';
 $string['course_summary'] = 'تحقق من مستوى تقدم كفاياتك الفنية في هذا المقرر.';
 $string['dashboard_summary'] = 'إنجاز كفاياتك الإجمالي عبر كافة المقررات الدراسية.';
 $string['nodata'] = 'لا تتوفر بيانات تقدم للكفايات حالياً.';

@@ -23,8 +23,8 @@
  */
 
 $string['pluginname'] = 'Competency Report Overview';
-$string['competency_report:addinstance'] = 'Add a Competency Report block';
-$string['competency_report:myaddinstance'] = 'Add a Competency Report block to My Moodle';
+$string['comp_report_ext:addinstance'] = 'Add a Competency Report block';
+$string['comp_report_ext:myaddinstance'] = 'Add a Competency Report block to My Moodle';
 $string['dashboard_summary'] = 'Your overall competency achievement across all courses.';
 $string['course_summary'] = 'Check your competency progression for this course.';
 $string['totalproficient'] = 'Total Proficiencies Achieved: {$a}';
