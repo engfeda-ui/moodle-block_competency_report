@@ -4,7 +4,7 @@
 [![PHP Version](https://img.shields.io/badge/PHP-8.1%20%7C%208.2%20%7C%208.3-blue.svg?style=flat-square)](https://php.net)
 [![Database](https://img.shields.io/badge/Database-PostgreSQL%20%7C%20MySQL%20%7C%20MariaDB-purple.svg?style=flat-square)](https://docs.moodle.org)
 [![License](https://img.shields.io/badge/License-GPL%20v3-green.svg?style=flat-square)](http://www.gnu.org/copyleft/gpl.html)
-[![Version](https://img.shields.io/badge/Version-v1.3.0-blue.svg?style=flat-square)](https://github.com/engfeda-ui/moodle-block_comp_report_ext)
+[![Version](https://img.shields.io/badge/Version-v1.3.1-blue.svg?style=flat-square)](https://github.com/engfeda-ui/moodle-block_comp_report_ext)
 
 A professional Moodle Dashboard Block plugin that provides students with a clean, high-impact summary of their competency achievements. Placed on the Moodle Dashboard or course sidebar, this widget shows total proficiencies achieved with a visual progress bar and provides one-click access to full competency analysis reports.
 
@@ -66,6 +66,9 @@ A professional Moodle Dashboard Block plugin that provides students with a clean
 ---
 
 ## 📋 Changelog
+
+### v1.3.1 — 2026-07-26
+- **Fix & Compliance:** Added official GNU General Public License v3 (`LICENSE`) file to root of plugin package for Moodle Marketplace compliance.
 
 ### v1.3.0 — 2026-07-24
 - **Release:** Standardized frankenstyle component name to `block_comp_report_ext` installed under `blocks/comp_report_ext`. Updated dependency requirement to `local_comp_report_ext` >= `2026072401`.
