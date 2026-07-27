@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <https://www.gnu.org/licenses/>.
 
 /**
- * Privacy provider for block_comp_report_ext.
+ * Privacy Subsystem implementation for block_comp_report_ext.
  *
  * @package    block_comp_report_ext
  * @copyright  2026 Mahmoud Salem
@@ -24,35 +24,26 @@
 
 namespace block_comp_report_ext\privacy;
 
-use core_privacy\local\metadata\collection;
-use core_privacy\local\request\writer;
+defined('MOODLE_INTERNAL') || die();
 
 /**
- * Privacy provider — this block stores no personal data of its own.
+ * Privacy Subsystem implementation for block_comp_report_ext.
  *
- * All competency data displayed by this block is owned by core_competency
- * and local_comp_report_ext; those plugins are responsible for their own
- * privacy declarations.
+ * This block stores no personal data of its own. It only displays competency
+ * statistics calculated by local_comp_report_ext.
  *
  * @package    block_comp_report_ext
  * @copyright  2026 Mahmoud Salem
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class provider implements \core_privacy\local\metadata\provider {
-    /**
-     * Returns metadata about this plugin's privacy footprint.
-     *
-     * @param collection $collection The initialised collection to add items to.
-     * @return collection The updated collection.
-     */
-    public static function get_metadata(collection $collection): collection {
-        // This block reads competency data from core tables but stores nothing itself.
-        $collection->add_plugintype_link(
-            'local_comp_report_ext',
-            [],
-            'privacy:metadata:local_comp_report_ext'
-        );
+class provider implements \core_privacy\local\metadata\null_provider {
 
-        return $collection;
+    /**
+     * Get the language string identifier explaining why this plugin stores no data.
+     *
+     * @return string
+     */
+    public static function get_reason(): string {
+        return 'privacy:metadata';
     }
 }
