@@ -4,7 +4,7 @@
 [![PHP Version](https://img.shields.io/badge/PHP-8.1%20%7C%208.2%20%7C%208.3-blue.svg?style=flat-square)](https://php.net)
 [![Database](https://img.shields.io/badge/Database-PostgreSQL%20%7C%20MySQL%20%7C%20MariaDB-purple.svg?style=flat-square)](https://docs.moodle.org)
 [![License](https://img.shields.io/badge/License-GPL%20v3-green.svg?style=flat-square)](http://www.gnu.org/copyleft/gpl.html)
-[![Version](https://img.shields.io/badge/Version-v1.4.2-blue.svg?style=flat-square)](https://github.com/engfeda-ui/moodle-block_competency_report)
+[![Version](https://img.shields.io/badge/Version-v1.4.3-blue.svg?style=flat-square)](https://github.com/engfeda-ui/moodle-block_competency_report)
 
 A professional Moodle Dashboard Block plugin that provides students with a clean, high-impact summary of their competency achievements. Placed on the Moodle Dashboard or course sidebar, this widget shows total proficiencies achieved with a visual progress bar and provides one-click access to full competency analysis reports.
 
@@ -66,6 +66,9 @@ A professional Moodle Dashboard Block plugin that provides students with a clean
 ---
 
 ## 📋 Changelog
+
+### v1.4.3 (2026082401) — 2026-08-24
+- **CI/CD:** Streamlined deployment pipeline directly to Production environment and removed deprecated staging branch/configuration.
 
 ### v1.4.2 (2026082400) — 2026-08-24
 - **Maintenance:** Added standard `.gitignore` and updated `.gitattributes` for complete LF line endings across all template/asset types.
