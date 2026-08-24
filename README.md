@@ -4,7 +4,7 @@
 [![PHP Version](https://img.shields.io/badge/PHP-8.1%20%7C%208.2%20%7C%208.3-blue.svg?style=flat-square)](https://php.net)
 [![Database](https://img.shields.io/badge/Database-PostgreSQL%20%7C%20MySQL%20%7C%20MariaDB-purple.svg?style=flat-square)](https://docs.moodle.org)
 [![License](https://img.shields.io/badge/License-GPL%20v3-green.svg?style=flat-square)](http://www.gnu.org/copyleft/gpl.html)
-[![Version](https://img.shields.io/badge/Version-v1.4.3-blue.svg?style=flat-square)](https://github.com/engfeda-ui/moodle-block_competency_report)
+[![Version](https://img.shields.io/badge/Version-v1.4.4-blue.svg?style=flat-square)](https://github.com/engfeda-ui/moodle-block_competency_report)
 
 A professional Moodle Dashboard Block plugin that provides students with a clean, high-impact summary of their competency achievements. Placed on the Moodle Dashboard or course sidebar, this widget shows total proficiencies achieved with a visual progress bar and provides one-click access to full competency analysis reports.
 
@@ -20,7 +20,7 @@ A professional Moodle Dashboard Block plugin that provides students with a clean
 - **Colour-Coded Progress Bar (NEW in v1.1.0):** Visual progress bar with three states — green (≥80%), yellow (≥50%), red (<50%).
 - **Capability Definitions (NEW in v1.1.0):** `db/access.php` now defines `addinstance` and `myaddinstance` capabilities, giving administrators fine-grained control over who can add the block.
 - **Privacy Provider (NEW in v1.1.0):** `classes/privacy/provider.php` formally declares that this block stores no personal data of its own.
-- **Localization Support:** English language strings included.
+- **Localization Support:** English and Arabic (`ar`) language packs included.
 
 ---
 
@@ -43,7 +43,7 @@ A professional Moodle Dashboard Block plugin that provides students with a clean
    ```
    moodle/blocks/comp_report_ext
    ```
-   > The directory name inside `blocks/` must be exactly `competency_report`.
+   > The directory name inside `blocks/` must be exactly `comp_report_ext`.
 4. **Run Moodle Upgrade:** Log in as Administrator and navigate to **Site administration > Notifications**.
 5. **Alternative Install:** Zip the directory and upload via **Site administration > Plugins > Install plugins**.
 
@@ -66,6 +66,9 @@ A professional Moodle Dashboard Block plugin that provides students with a clean
 ---
 
 ## 📋 Changelog
+
+### v1.4.4 (2026082402) — 2026-08-24
+- **Documentation:** Corrected installation directory path note to `comp_report_ext` and documented Arabic language pack support.
 
 ### v1.4.3 (2026082401) — 2026-08-24
 - **CI/CD:** Streamlined deployment pipeline directly to Production environment and removed deprecated staging branch/configuration.
