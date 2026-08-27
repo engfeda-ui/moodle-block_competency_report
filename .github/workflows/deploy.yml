@@ -10,7 +10,7 @@ env:
 
 jobs:
   deploy:
-    name: 🚀 Deploy ${{ env.PLUGIN_PATH }}
+    name: 🚀 Deploy blocks/comp_report_ext
     runs-on: ubuntu-latest
 
     steps:
